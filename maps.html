@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Wedding Map - Anti & Vian</title>
+  <title>Wedding Map - Catur & Chudzaifiyah</title>
   <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
   <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine/dist/leaflet-routing-machine.css" />
   <style>
@@ -237,14 +237,14 @@
 
   <script>
     const countdownElement = document.getElementById('countdown');
-    let targetDate = new Date('2025-06-22T14:00:00');
+    let targetDate = new Date('2026-03-29T13:00:00');
 
     document.getElementById('eventSelect').addEventListener('change', function () {
       const selected = this.value;
       if (selected === 'Akad') {
-        targetDate = new Date('2025-06-22T06:00:00');
+        targetDate = new Date('2026-03-29T06:00:00');
       } else {
-        targetDate = new Date('2025-06-22T14:00:00');
+        targetDate = new Date('2026-03-29T13:00:00');
       }
     });
 
@@ -289,8 +289,8 @@
     const countdownInterval = setInterval(updateCountdown, 1000);
   </script>
   <script>
-    const fixedLat = -8.367006;
-    const fixedLon = 113.472715;
+    const fixedLat = -8.11331148226026;
+    const fixedLon = 113.27084628937766;
     const fixedPoint = L.latLng(fixedLat, fixedLon);
 
     const map = L.map("map", { zoomControl: false }).setView([fixedLat, fixedLon], 17);
@@ -301,7 +301,7 @@
 
     // Tambahkan tile layer OSM HOT
     L.tileLayer("https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png", {
-      attribution: "Made with <span style='color: #e6a0ad !important;'>❤</span> by Vian for Anti",
+      attribution: "",
     }).addTo(map);
 
     // Kontrol zoom kanan bawah

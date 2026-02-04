@@ -117,7 +117,7 @@ var initCoreInvitation = function initCoreInvitation() {
   // countdown
   var countdownElement = document.getElementsByClassName('countdown-wrapper');
   var displayCountdown = function displayCountdown(target) {
-    var countDownDate = new Date('2025-06-22T06:00:00+07:00').getTime();
+    var countDownDate = new Date('2026-03-29T06:00:00+07:00').getTime();
     var daysEl = target.querySelector('.countdown > .day > .number');
     var hoursEl = target.querySelector('.countdown > .hour > .number');
     var minutesEl = target.querySelector('.countdown > .minute > .number');

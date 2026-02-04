@@ -1,6 +1,6 @@
 
         @import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap');
-@import url('../fonts/e111viva/style.css');
+@import url('https://fonts.googleapis.com/css2?family=Alex+Brush&display=swap');
 @import url('../fonts/against/style.css');
 
 :root {
@@ -14,7 +14,7 @@
     --btn-color: #ffffff;
     --font-base: "Jost", serif;
     --font-accent: "Against", serif;
-    --font-latin: "English111 Vivace BT", cursive;
+    --font-latin: "Alex Brush", cursive;
 }
 
 @keyframes wave-left {
