@@ -3,7 +3,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Alex+Brush&display=swap');
 @import url('../fonts/against/style.css');
 
-/* :root {
+:root {
     --inv-bg: #f6f4f0;
     --inv-base: #3d67a4;
     --inv-accent: #e6a0ad;
@@ -15,8 +15,8 @@
     --font-base: "Jost", serif;
     --font-accent: "Against", serif;
     --font-latin: "Alex Brush", cursive;
-} */
-:root {
+}
+/* :root {
     --inv-bg: #f6f4f0;
     --inv-base: #4B4B4B;
     --inv-accent: #7A8F84;
@@ -28,7 +28,7 @@
     --font-base: "Jost", serif;
     --font-accent: "Against", serif;
     --font-latin: "Alex Brush", cursive;
-}
+} */
 
 @keyframes wave-left {
     0% {
