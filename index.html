@@ -112,53 +112,72 @@
     </script>
 
     <style>
-        /* Loader styles */
+        /* Ethereal Garden & Morning Sky Theme */
         #loader {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: white;
+            background: var(--inv-bg);
             display: flex;
             justify-content: center;
             align-items: center;
             flex-direction: column;
             text-align: center;
             z-index: 99999;
+            overflow: hidden;
+        }
+
+        #loader::before {
+            content: "";
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.1) 0%, transparent 70%);
+            animation: pulse 4s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.2); opacity: 0.8; }
         }
 
         .spinner {
-            border: 8px solid #f3f3f3;
-            border-top: 8px solid #e6a0ad;
+            border: 8px solid rgba(212, 175, 55, 0.1);
+            border-top: 8px solid #d4af37;
             border-radius: 50%;
             width: 60px;
             height: 60px;
-            animation: spin 1s linear infinite;
+            animation: spin 1.5s cubic-bezier(0.68, -0.55, 0.265, 1.55) infinite;
+            box-shadow: 0 0 30px rgba(212, 175, 55, 0.5), 0 0 60px rgba(212, 175, 55, 0.3);
+            position: relative;
+            z-index: 1;
         }
 
         @keyframes spin {
-            0% {
-                transform: rotate(0deg);
-            }
-
-            100% {
-                transform: rotate(360deg);
-            }
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
 
+        /* Light Glassmorphism with Ethereal Theme */
         .glass-effect {
-            background-color: rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 0 8px 32px rgba(44, 66, 57, 0.08);
         }
 
         .glass-effect-2 {
-            background-color: rgba(255, 255, 255, 0.6);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(15px) saturate(160%);
+            -webkit-backdrop-filter: blur(15px) saturate(160%);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            box-shadow: 0 12px 48px rgba(44, 66, 57, 0.12);
         }
 
+        /* Enhanced Fade Background with Gold Overlay */
         .fade-bg {
             background-size: cover;
             background-position: center;
@@ -182,20 +201,33 @@
             background-image: url('image/us-1.jpeg');
             background-size: cover;
             background-position: center;
-            opacity: 0.9;
-            /* filter: blur(8px); */
+            opacity: 0.15;
             z-index: 1;
             background-position-y: -210px;
+            filter: brightness(1.1) contrast(1) sepia(0.1);
+        }
+
+        .fade-bg::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 120px;
+            width: 100%;
+            background: linear-gradient(135deg, 
+                rgba(255, 255, 255, 0.6) 0%, 
+                rgba(120, 157, 142, 0.2) 50%,
+                rgba(255, 255, 255, 0.4) 100%);
+            z-index: 2;
         }
 
         .fade-bg>* {
             position: relative;
-            z-index: 2;
+            z-index: 3;
         }
 
         .fade-bg-2 {
             background-image: url('image/us-2.jpeg');
-            /* Your actual image */
             background-size: cover;
             background-position: center;
             position: relative;
@@ -206,12 +238,12 @@
             align-items: center;
             color: inherit;
             overflow: hidden;
-            opacity: 0.9;
+            opacity: 0.2;
+            filter: brightness(1.1) contrast(1);
         }
 
         .fade-bg-3 {
             background-image: url('image/us-3.jpeg');
-            /* Your actual image */
             background-size: cover;
             background-position: center;
             position: relative;
@@ -222,18 +254,21 @@
             align-items: center;
             color: inherit;
             overflow: hidden;
-            opacity: 0.9;
+            opacity: 0.2;
+            filter: brightness(1.1) contrast(1);
         }
 
-
+        /* Luxury Text Shadows with Gold Glow */
         .text-shadow-white {
-            text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.6);
+            text-shadow: 0 2px 8px rgba(255, 255, 255, 1);
         }
 
-        /* .text-shadow-black {
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.15);
-        } */
+        .text-shadow-gold {
+            text-shadow: 0 1px 3px rgba(44, 66, 57, 0.1);
+            color: var(--inv-accent);
+        }
 
+        /* Enhanced Swipe Indicator with Dark Theme */
         .swipe-indicator {
             position: fixed;
             display: flex;
@@ -241,9 +276,9 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(5px);
-            -webkit-backdrop-filter: blur(5px);
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.96) 0%, rgba(240, 248, 244, 0.96) 100%);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
             justify-content: center;
             align-items: center;
             font-family: sans-serif;
@@ -251,7 +286,7 @@
             transition: opacity 1s ease;
             z-index: 99999;
             flex-direction: column;
-            color: #333;
+            color: #2c4239;
         }
 
         .swipe-indicator .arrow-swap-up {
@@ -259,9 +294,11 @@
             justify-content: center;
             align-items: center;
             font-size: 32px;
-            animation: bounce 1.5s infinite;
+            animation: bounce 1.5s ease-in-out infinite;
             margin-top: auto;
             font-weight: 900;
+            color: #d4af37;
+            text-shadow: 0 0 20px rgba(212, 175, 55, 0.8);
         }
 
         .swipe-indicator .arrow-swap-down {
@@ -269,9 +306,11 @@
             justify-content: center;
             align-items: center;
             font-size: 32px;
-            animation: bounce-2 1.5s infinite;
+            animation: bounce-2 1.5s ease-in-out infinite;
             margin-bottom: auto;
             font-weight: 900;
+            color: #d4af37;
+            text-shadow: 0 0 20px rgba(212, 175, 55, 0.8);
         }
 
         .swipe-indicator .text-swap {
@@ -279,69 +318,149 @@
             justify-content: center;
             align-items: center;
             font-size: 16px;
-            font-weight: 700;
+            font-weight: 600;
             text-align: center;
             margin-top: 20px;
             margin-bottom: 20px;
             font-family: 'Jost', sans-serif !important;
+            letter-spacing: 1px;
+            color: var(--inv-accent);
         }
 
         @keyframes bounce {
-
-            0%,
-            100% {
-                transform: translateY(0);
-            }
-
-            50% {
-                transform: translateY(-10px);
-            }
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
         }
 
         @keyframes bounce-2 {
-
-            0%,
-            100% {
-                transform: translateY(0);
-            }
-
-            50% {
-                transform: translateY(10px);
-            }
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(15px); }
         }
 
         @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-
-            to {
-                opacity: 1;
-            }
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
 
+        /* Luxury Button Styles with Gold Metallic */
         .btn-pink {
-            border: 2px solid #e6a0ad;
-            background-color: white;
-            color: #e6a0ad;
-            transition: all 0.3s ease;
+            border: 2px solid #d4af37;
+            background: linear-gradient(135deg, #d4af37 0%, #b8941f 100%);
+            color: #0a1612;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 4px 20px rgba(212, 175, 55, 0.4),
+                        0 0 30px rgba(212, 175, 55, 0.2);
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-pink::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.5s;
+        }
+
+        .btn-pink:hover::before {
+            left: 100%;
         }
 
         .btn-pink:hover {
-            background-color: #e6a0ad;
-            color: white;
+            background: linear-gradient(135deg, #f4e5b8 0%, #d4af37 100%);
+            color: #0a1612;
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 8px 30px rgba(212, 175, 55, 0.6),
+                        0 0 50px rgba(212, 175, 55, 0.4);
         }
 
         .btn-whatsapp {
             border: 2px solid #25D366;
-            background-color: white;
-            color: #25D366;
-            transition: all 0.3s ease;
+            background: linear-gradient(135deg, #25D366 0%, #20b858 100%);
+            color: #ffffff;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4),
+                        0 0 30px rgba(37, 211, 102, 0.2);
+            font-weight: 600;
+            letter-spacing: 1px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-whatsapp::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.5s;
+        }
+
+        .btn-whatsapp:hover::before {
+            left: 100%;
         }
 
         .btn-whatsapp:hover {
-            background-color: #25D366;
-            color: white;
+            background: linear-gradient(135deg, #2eeb7a 0%, #25D366 100%);
+            color: #ffffff;
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 8px 30px rgba(37, 211, 102, 0.6),
+                        0 0 50px rgba(37, 211, 102, 0.4);
+        }
+
+        /* Particle Effect Background */
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); opacity: 0.3; }
+            50% { transform: translateY(-20px) rotate(180deg); opacity: 0.6; }
+        }
+
+        /* Metallic Shimmer Effect */
+        @keyframes shimmer {
+            0% { background-position: -1000px 0; }
+            100% { background-position: 1000px 0; }
+        }
+
+        .shimmer-effect {
+            background: linear-gradient(90deg, 
+                transparent, 
+                rgba(212, 175, 55, 0.2), 
+                transparent);
+            background-size: 1000px 100%;
+            animation: shimmer 3s infinite;
+        }
+
+        /* Gold Glow Animation */
+        @keyframes glow {
+            0%, 100% { 
+                box-shadow: 0 0 20px rgba(212, 175, 55, 0.4),
+                            0 0 40px rgba(212, 175, 55, 0.2);
+            }
+            50% { 
+                box-shadow: 0 0 30px rgba(212, 175, 55, 0.6),
+                            0 0 60px rgba(212, 175, 55, 0.4);
+            }
+        }
+
+        .glow-gold {
+            animation: glow 2s ease-in-out infinite;
+        }
+
+        /* Luxury Border Animation */
+        @keyframes borderGlow {
+            0%, 100% { border-color: rgba(212, 175, 55, 0.3); }
+            50% { border-color: rgba(212, 175, 55, 0.8); }
+        }
+
+        .border-glow {
+            animation: borderGlow 2s ease-in-out infinite;
         }
     </style>
 
@@ -374,6 +493,9 @@
                     <div class="canvas not-open" style="height: 736px;">
                         <div id="satuMomen" data-guest="Nama Tamu" data-group="VIP"
                             style="height: 736px; display: block;">
+                            <!-- Efek Dekoratif Global -->
+                            <div class="gold-dust"></div>
+                            <div class="emerald-mist"></div>
                             <div class="satumomen_track">
                                 <ul class="satumomen_list">
                                     <li class="satumomen_slide satumomen_cover" style="">
@@ -388,12 +510,12 @@
                                                             class="w-100">
                                                     </div>
                                                 </div>
-                                                <div class="frame-tl animate-right"
+                                                <div class="frame-tl animate-left"
                                                     style="width: 50%; transform: translate(0%, -13%);">
                                                     <div
                                                         class="animate__animated animate__fadeInTopLeft animate__slower">
                                                         <img src="image/top_2.webp" alt="flowers" draggable="false"
-                                                            class="w-100" style="animation-duration: 3.5s;">
+                                                            class="w-100" style="transform-origin: center top;">
                                                     </div>
                                                 </div>
                                                 <div class="frame-tl animate-right"
@@ -402,10 +524,10 @@
                                                         class="animate__animated animate__fadeInTopLeft animate__slower">
                                                         <img src="image/top_3.webp" alt="flowers" draggable="false"
                                                             class="w-100"
-                                                            style="transform-origin: center top; animation-delay: 3.8s;">
+                                                            style="transform-origin: center top; ">
                                                     </div>
                                                 </div>
-                                                <div class="frame-tl animate-right"
+                                                <div class="frame-tl animate-slight"
                                                     style="width: 50%; transform: translate(-5%, -12%);">
                                                     <div
                                                         class="animate__animated animate__fadeInTopLeft animate__slower">
@@ -421,12 +543,12 @@
                                                             class="w-100">
                                                     </div>
                                                 </div>
-                                                <div class="frame-tr animate-right"
+                                                <div class="frame-tr animate-left"
                                                     style="width: 50%; transform: translate(0%, -13%) scaleX(-1);">
                                                     <div
                                                         class="animate__animated animate__fadeInTopLeft animate__slower">
                                                         <img src="image/top_2.webp" alt="flowers" draggable="false"
-                                                            class="w-100" style="animation-duration: 3.5s;">
+                                                            class="w-100" style="transform-origin: center top;">
                                                     </div>
                                                 </div>
                                                 <div class="frame-tr animate-right"
@@ -435,10 +557,10 @@
                                                         class="animate__animated animate__fadeInTopLeft animate__slower">
                                                         <img src="image/top_3.webp" alt="flowers" draggable="false"
                                                             class="w-100"
-                                                            style="transform-origin: center top; animation-delay: 3.8s;">
+                                                            style="transform-origin: center top; ">
                                                     </div>
                                                 </div>
-                                                <div class="frame-tr animate-right"
+                                                <div class="frame-tr animate-slight"
                                                     style="width: 50%; transform: translate(5%, -12%) scaleX(-1);">
                                                     <div
                                                         class="animate__animated animate__fadeInTopLeft animate__slower">
@@ -467,7 +589,7 @@
                                                         class="animate__animated animate__fadeInBottomLeft animate__slower">
                                                         <img src="image/bottom_2.webp" alt="flowers" draggable="false"
                                                             class="w-100"
-                                                            style="transform-origin: left bottom; animation-duration: 3.6s;">
+                                                            style="transform-origin: center bottom;">
                                                     </div>
                                                 </div>
                                                 <div class="frame-bl kupu-style"
@@ -498,9 +620,9 @@
                                                     style="width: 50%; transform: translate(-7%, 20%) scaleX(-1);">
                                                     <div
                                                         class="animate__animated animate__fadeInBottomLeft animate__slower">
-                                                        <img src="image/bottom_2.webp" alt="flowers" draggabre="false"
+                                                        <img src="image/bottom_2.webp" alt="flowers" draggable="false"
                                                             class="w-100"
-                                                            style="transform-origin: left bottom; animation-duration: 3.6s;">
+                                                            style="transform-origin: center bottom;">
                                                     </div>
                                                 </div>
                                                 <div class="frame-br kupu-style"
@@ -556,12 +678,12 @@
                                                             class="w-100">
                                                     </div>
                                                 </div>
-                                                <div class="frame-tl animate-right"
+                                                <div class="frame-tl animate-left"
                                                     style="width: 50%; transform: translate(0%, -13%);">
                                                     <div
                                                         class="animate__animated animate__fadeInTopLeft animate__slower">
                                                         <img src="image/top_2.webp" alt="flowers" draggable="false"
-                                                            class="w-100" style="animation-duration: 3.5s;">
+                                                            class="w-100" style="transform-origin: center top;">
                                                     </div>
                                                 </div>
                                                 <div class="frame-tl animate-right"
@@ -570,10 +692,10 @@
                                                         class="animate__animated animate__fadeInTopLeft animate__slower">
                                                         <img src="image/top_3.webp" alt="flowers" draggable="false"
                                                             class="w-100"
-                                                            style="transform-origin: center top; animation-delay: 3.8s;">
+                                                            style="transform-origin: center top; ">
                                                     </div>
                                                 </div>
-                                                <div class="frame-tl animate-right"
+                                                <div class="frame-tl animate-slight"
                                                     style="width: 50%; transform: translate(-5%, -12%);">
                                                     <div
                                                         class="animate__animated animate__fadeInTopLeft animate__slower">
@@ -589,12 +711,12 @@
                                                             class="w-100">
                                                     </div>
                                                 </div>
-                                                <div class="frame-tr animate-right"
+                                                <div class="frame-tr animate-left"
                                                     style="width: 50%; transform: translate(0%, -13%) scaleX(-1);">
                                                     <div
                                                         class="animate__animated animate__fadeInTopLeft animate__slower">
                                                         <img src="image/top_2.webp" alt="flowers" draggable="false"
-                                                            class="w-100" style="animation-duration: 3.5s;">
+                                                            class="w-100" style="transform-origin: center top;">
                                                     </div>
                                                 </div>
                                                 <div class="frame-tr animate-right"
@@ -603,10 +725,10 @@
                                                         class="animate__animated animate__fadeInTopLeft animate__slower">
                                                         <img src="image/top_3.webp" alt="flowers" draggable="false"
                                                             class="w-100"
-                                                            style="transform-origin: center top; animation-delay: 3.8s;">
+                                                            style="transform-origin: center top; ">
                                                     </div>
                                                 </div>
-                                                <div class="frame-tr animate-right"
+                                                <div class="frame-tr animate-slight"
                                                     style="width: 50%; transform: translate(5%, -12%) scaleX(-1);">
                                                     <div
                                                         class="animate__animated animate__fadeInTopLeft animate__slower">
@@ -635,7 +757,7 @@
                                                         class="animate__animated animate__fadeInBottomLeft animate__slower">
                                                         <img src="image/bottom_2.webp" alt="flowers" draggable="false"
                                                             class="w-100"
-                                                            style="transform-origin: left bottom; animation-duration: 3.6s;">
+                                                            style="transform-origin: center bottom;">
                                                     </div>
                                                 </div>
                                                 <div class="frame-bl kupu-style"
@@ -666,9 +788,9 @@
                                                     style="width: 50%; transform: translate(-7%, 20%) scaleX(-1);">
                                                     <div
                                                         class="animate__animated animate__fadeInBottomLeft animate__slower">
-                                                        <img src="image/bottom_2.webp" alt="flowers" draggabre="false"
+                                                        <img src="image/bottom_2.webp" alt="flowers" draggable="false"
                                                             class="w-100"
-                                                            style="transform-origin: left bottom; animation-duration: 3.6s;">
+                                                            style="transform-origin: center bottom;">
                                                     </div>
                                                 </div>
                                                 <div class="frame-br kupu-style"
@@ -727,12 +849,12 @@
                                                             class="w-100">
                                                     </div>
                                                 </div>
-                                                <div class="frame-tl animate-right"
+                                                <div class="frame-tl animate-left"
                                                     style="width: 50%; transform: translate(0%, -13%);">
                                                     <div
                                                         class="animate__animated animate__fadeInTopLeft animate__slower">
                                                         <img src="image/top_2.webp" alt="flowers" draggable="false"
-                                                            class="w-100" style="animation-duration: 3.5s;">
+                                                            class="w-100" style="transform-origin: center top;">
                                                     </div>
                                                 </div>
                                                 <div class="frame-tl animate-right"
@@ -741,10 +863,10 @@
                                                         class="animate__animated animate__fadeInTopLeft animate__slower">
                                                         <img src="image/top_3.webp" alt="flowers" draggable="false"
                                                             class="w-100"
-                                                            style="transform-origin: center top; animation-delay: 3.8s;">
+                                                            style="transform-origin: center top; ">
                                                     </div>
                                                 </div>
-                                                <div class="frame-tl animate-right"
+                                                <div class="frame-tl animate-slight"
                                                     style="width: 50%; transform: translate(-5%, -12%);">
                                                     <div
                                                         class="animate__animated animate__fadeInTopLeft animate__slower">
@@ -760,12 +882,12 @@
                                                             class="w-100">
                                                     </div>
                                                 </div>
-                                                <div class="frame-tr animate-right"
+                                                <div class="frame-tr animate-left"
                                                     style="width: 50%; transform: translate(0%, -13%) scaleX(-1);">
                                                     <div
                                                         class="animate__animated animate__fadeInTopLeft animate__slower">
                                                         <img src="image/top_2.webp" alt="flowers" draggable="false"
-                                                            class="w-100" style="animation-duration: 3.5s;">
+                                                            class="w-100" style="transform-origin: center top;">
                                                     </div>
                                                 </div>
                                                 <div class="frame-tr animate-right"
@@ -774,10 +896,10 @@
                                                         class="animate__animated animate__fadeInTopLeft animate__slower">
                                                         <img src="image/top_3.webp" alt="flowers" draggable="false"
                                                             class="w-100"
-                                                            style="transform-origin: center top; animation-delay: 3.8s;">
+                                                            style="transform-origin: center top; ">
                                                     </div>
                                                 </div>
-                                                <div class="frame-tr animate-right"
+                                                <div class="frame-tr animate-slight"
                                                     style="width: 50%; transform: translate(5%, -12%) scaleX(-1);">
                                                     <div
                                                         class="animate__animated animate__fadeInTopLeft animate__slower">
@@ -806,7 +928,7 @@
                                                         class="animate__animated animate__fadeInBottomLeft animate__slower">
                                                         <img src="image/bottom_2.webp" alt="flowers" draggable="false"
                                                             class="w-100"
-                                                            style="transform-origin: left bottom; animation-duration: 3.6s;">
+                                                            style="transform-origin: center bottom;">
                                                     </div>
                                                 </div>
                                                 <div class="frame-bl kupu-style"
@@ -837,9 +959,9 @@
                                                     style="width: 50%; transform: translate(-7%, 20%) scaleX(-1);">
                                                     <div
                                                         class="animate__animated animate__fadeInBottomLeft animate__slower">
-                                                        <img src="image/bottom_2.webp" alt="flowers" draggabre="false"
+                                                        <img src="image/bottom_2.webp" alt="flowers" draggable="false"
                                                             class="w-100"
-                                                            style="transform-origin: left bottom; animation-duration: 3.6s;">
+                                                            style="transform-origin: center bottom;">
                                                     </div>
                                                 </div>
                                                 <div class="frame-br kupu-style"
@@ -895,12 +1017,12 @@
                                                             class="w-100">
                                                     </div>
                                                 </div>
-                                                <div class="frame-tl animate-right"
+                                                <div class="frame-tl animate-left"
                                                     style="width: 50%; transform: translate(0%, -13%);">
                                                     <div
                                                         class="animate__animated animate__fadeInTopLeft animate__slower">
                                                         <img src="image/top_2.webp" alt="flowers" draggable="false"
-                                                            class="w-100" style="animation-duration: 3.5s;">
+                                                            class="w-100" style="transform-origin: center top;">
                                                     </div>
                                                 </div>
                                                 <div class="frame-tl animate-right"
@@ -909,10 +1031,10 @@
                                                         class="animate__animated animate__fadeInTopLeft animate__slower">
                                                         <img src="image/top_3.webp" alt="flowers" draggable="false"
                                                             class="w-100"
-                                                            style="transform-origin: center top; animation-delay: 3.8s;">
+                                                            style="transform-origin: center top;">
                                                     </div>
                                                 </div>
-                                                <div class="frame-tl animate-right"
+                                                <div class="frame-tl animate-slight"
                                                     style="width: 50%; transform: translate(-5%, -12%);">
                                                     <div
                                                         class="animate__animated animate__fadeInTopLeft animate__slower">
@@ -928,12 +1050,12 @@
                                                             class="w-100">
                                                     </div>
                                                 </div>
-                                                <div class="frame-tr animate-right"
+                                                <div class="frame-tr animate-left"
                                                     style="width: 50%; transform: translate(0%, -13%) scaleX(-1);">
                                                     <div
                                                         class="animate__animated animate__fadeInTopLeft animate__slower">
                                                         <img src="image/top_2.webp" alt="flowers" draggable="false"
-                                                            class="w-100" style="animation-duration: 3.5s;">
+                                                            class="w-100" style="transform-origin: center top;">
                                                     </div>
                                                 </div>
                                                 <div class="frame-tr animate-right"
@@ -942,10 +1064,10 @@
                                                         class="animate__animated animate__fadeInTopLeft animate__slower">
                                                         <img src="image/top_3.webp" alt="flowers" draggable="false"
                                                             class="w-100"
-                                                            style="transform-origin: center top; animation-delay: 3.8s;">
+                                                            style="transform-origin: center top; ">
                                                     </div>
                                                 </div>
-                                                <div class="frame-tr animate-right"
+                                                <div class="frame-tr animate-slight"
                                                     style="width: 50%; transform: translate(5%, -12%) scaleX(-1);">
                                                     <div
                                                         class="animate__animated animate__fadeInTopLeft animate__slower">
@@ -974,7 +1096,7 @@
                                                         class="animate__animated animate__fadeInBottomLeft animate__slower">
                                                         <img src="image/bottom_2.webp" alt="flowers" draggable="false"
                                                             class="w-100"
-                                                            style="transform-origin: left bottom; animation-duration: 3.6s;">
+                                                            style="transform-origin: center bottom;">
                                                     </div>
                                                 </div>
                                                 <div class="frame-bl  kupu-style"
@@ -1005,9 +1127,9 @@
                                                     style="width: 50%; transform: translate(-7%, 20%) scaleX(-1);">
                                                     <div
                                                         class="animate__animated animate__fadeInBottomLeft animate__slower">
-                                                        <img src="image/bottom_2.webp" alt="flowers" draggabre="false"
+                                                        <img src="image/bottom_2.webp" alt="flowers" draggable="false"
                                                             class="w-100"
-                                                            style="transform-origin: left bottom; animation-duration: 3.6s;">
+                                                            style="transform-origin: center bottom;">
                                                     </div>
                                                 </div>
                                                 <div class="frame-br  kupu-style"
@@ -1080,12 +1202,12 @@
                                                             class="w-100">
                                                     </div>
                                                 </div>
-                                                <div class="frame-tl animate-right"
+                                                <div class="frame-tl animate-left"
                                                     style="width: 50%; transform: translate(0%, -13%);">
                                                     <div
                                                         class="animate__animated animate__fadeInTopLeft animate__slower">
                                                         <img src="image/top_2.webp" alt="flowers" draggable="false"
-                                                            class="w-100" style="animation-duration: 3.5s;">
+                                                            class="w-100" style="transform-origin: center top;">
                                                     </div>
                                                 </div>
                                                 <div class="frame-tl animate-right"
@@ -1094,10 +1216,10 @@
                                                         class="animate__animated animate__fadeInTopLeft animate__slower">
                                                         <img src="image/top_3.webp" alt="flowers" draggable="false"
                                                             class="w-100"
-                                                            style="transform-origin: center top; animation-delay: 3.8s;">
+                                                            style="transform-origin: center top; ">
                                                     </div>
                                                 </div>
-                                                <div class="frame-tl animate-right"
+                                                <div class="frame-tl animate-slight"
                                                     style="width: 50%; transform: translate(-5%, -12%);">
                                                     <div
                                                         class="animate__animated animate__fadeInTopLeft animate__slower">
@@ -1113,12 +1235,12 @@
                                                             class="w-100">
                                                     </div>
                                                 </div>
-                                                <div class="frame-tr animate-right"
+                                                <div class="frame-tr animate-left"
                                                     style="width: 50%; transform: translate(0%, -13%) scaleX(-1);">
                                                     <div
                                                         class="animate__animated animate__fadeInTopLeft animate__slower">
                                                         <img src="image/top_2.webp" alt="flowers" draggable="false"
-                                                            class="w-100" style="animation-duration: 3.5s;">
+                                                            class="w-100" style="transform-origin: center top;">
                                                     </div>
                                                 </div>
                                                 <div class="frame-tr animate-right"
@@ -1127,10 +1249,10 @@
                                                         class="animate__animated animate__fadeInTopLeft animate__slower">
                                                         <img src="image/top_3.webp" alt="flowers" draggable="false"
                                                             class="w-100"
-                                                            style="transform-origin: center top; animation-delay: 3.8s;">
+                                                            style="transform-origin: center top; ">
                                                     </div>
                                                 </div>
-                                                <div class="frame-tr animate-right"
+                                                <div class="frame-tr animate-slight"
                                                     style="width: 50%; transform: translate(5%, -12%) scaleX(-1);">
                                                     <div
                                                         class="animate__animated animate__fadeInTopLeft animate__slower">
@@ -1159,7 +1281,7 @@
                                                         class="animate__animated animate__fadeInBottomLeft animate__slower">
                                                         <img src="image/bottom_2.webp" alt="flowers" draggable="false"
                                                             class="w-100"
-                                                            style="transform-origin: left bottom; animation-duration: 3.6s;">
+                                                            style="transform-origin: center bottom;">
                                                     </div>
                                                 </div>
                                                 <div class="frame-bl kupu-style"
@@ -1190,9 +1312,9 @@
                                                     style="width: 50%; transform: translate(-7%, 20%) scaleX(-1);">
                                                     <div
                                                         class="animate__animated animate__fadeInBottomLeft animate__slower">
-                                                        <img src="image/bottom_2.webp" alt="flowers" draggabre="false"
+                                                        <img src="image/bottom_2.webp" alt="flowers" draggable="false"
                                                             class="w-100"
-                                                            style="transform-origin: left bottom; animation-duration: 3.6s;">
+                                                            style="transform-origin: center bottom;">
                                                     </div>
                                                 </div>
                                                 <div class="frame-br kupu-style"
@@ -1265,12 +1387,12 @@
                                                             class="w-100">
                                                     </div>
                                                 </div>
-                                                <div class="frame-tl animate-right"
+                                                <div class="frame-tl animate-left"
                                                     style="width: 50%; transform: translate(0%, -13%);">
                                                     <div
                                                         class="animate__animated animate__fadeInTopLeft animate__slower">
                                                         <img src="image/top_2.webp" alt="flowers" draggable="false"
-                                                            class="w-100" style="animation-duration: 3.5s;">
+                                                            class="w-100" style="transform-origin: center top;">
                                                     </div>
                                                 </div>
                                                 <div class="frame-tl animate-right"
@@ -1279,10 +1401,10 @@
                                                         class="animate__animated animate__fadeInTopLeft animate__slower">
                                                         <img src="image/top_3.webp" alt="flowers" draggable="false"
                                                             class="w-100"
-                                                            style="transform-origin: center top; animation-delay: 3.8s;">
+                                                            style="transform-origin: center top; ">
                                                     </div>
                                                 </div>
-                                                <div class="frame-tl animate-right"
+                                                <div class="frame-tl animate-slight"
                                                     style="width: 50%; transform: translate(-5%, -12%);">
                                                     <div
                                                         class="animate__animated animate__fadeInTopLeft animate__slower">
@@ -1298,12 +1420,12 @@
                                                             class="w-100">
                                                     </div>
                                                 </div>
-                                                <div class="frame-tr animate-right"
+                                                <div class="frame-tr animate-left"
                                                     style="width: 50%; transform: translate(0%, -13%) scaleX(-1);">
                                                     <div
                                                         class="animate__animated animate__fadeInTopLeft animate__slower">
                                                         <img src="image/top_2.webp" alt="flowers" draggable="false"
-                                                            class="w-100" style="animation-duration: 3.5s;">
+                                                            class="w-100" style="transform-origin: center top;">
                                                     </div>
                                                 </div>
                                                 <div class="frame-tr animate-right"
@@ -1312,10 +1434,10 @@
                                                         class="animate__animated animate__fadeInTopLeft animate__slower">
                                                         <img src="image/top_3.webp" alt="flowers" draggable="false"
                                                             class="w-100"
-                                                            style="transform-origin: center top; animation-delay: 3.8s;">
+                                                            style="transform-origin: center top; ">
                                                     </div>
                                                 </div>
-                                                <div class="frame-tr animate-right"
+                                                <div class="frame-tr animate-slight"
                                                     style="width: 50%; transform: translate(5%, -12%) scaleX(-1);">
                                                     <div
                                                         class="animate__animated animate__fadeInTopLeft animate__slower">
@@ -1344,7 +1466,7 @@
                                                         class="animate__animated animate__fadeInBottomLeft animate__slower">
                                                         <img src="image/bottom_2.webp" alt="flowers" draggable="false"
                                                             class="w-100"
-                                                            style="transform-origin: left bottom; animation-duration: 3.6s;">
+                                                            style="transform-origin: center bottom;">
                                                     </div>
                                                 </div>
                                                 <div class="frame-bl"
@@ -1375,9 +1497,9 @@
                                                     style="width: 50%; transform: translate(-7%, 20%) scaleX(-1);">
                                                     <div
                                                         class="animate__animated animate__fadeInBottomLeft animate__slower">
-                                                        <img src="image/bottom_2.webp" alt="flowers" draggabre="false"
+                                                        <img src="image/bottom_2.webp" alt="flowers" draggable="false"
                                                             class="w-100"
-                                                            style="transform-origin: left bottom; animation-duration: 3.6s;">
+                                                            style="transform-origin: center bottom;">
                                                     </div>
                                                 </div>
                                                 <div class="frame-br"
@@ -1414,7 +1536,7 @@
                                                                 Lumajang, Jawa Timur 67352</div><a href="maps"
                                                                 target="_blank" rel="noreferrer noopener"
                                                                 class="btn-maps-link mx-auto btn btn-primary rounded-pill animate__animated animate__fadeInUp animate__slow"
-                                                                style="gap: 8px; max-width: 200px;">
+                                                                style="gap: 8px;">
                                                                 Petunjuk Ke Lokasi</a>
                                                         </div>
                                                     </div>
@@ -1424,21 +1546,22 @@
                                     </li>
                                     <li class="satumomen_slide" style="display: none;">
                                         <div class="container-mobile" style="background-image: url('image/bg.webp');">
+                                            <div class="gold-dust"></div>
                                             <div class="frame">
                                                 <div class="frame-tl"
                                                     style="width: 50%; z-index: 999; transform: translate(0px, 0px);">
                                                     <div
                                                         class="animate__animated animate__fadeInTopLeft animate__slower">
                                                         <img src="image/top_1.webp" alt="flowers" draggable="false"
-                                                            class="w-100">
+                                                            class="w-100" >
                                                     </div>
                                                 </div>
-                                                <div class="frame-tl animate-right"
+                                                <div class="frame-tl animate-left"
                                                     style="width: 50%; z-index: 999; transform: translate(0%, -13%);">
                                                     <div
                                                         class="animate__animated animate__fadeInTopLeft animate__slower">
                                                         <img src="image/top_2.webp" alt="flowers" draggable="false"
-                                                            class="w-100" style="animation-duration: 3.5s;">
+                                                            class="w-100" style="transform-origin: center top;">
                                                     </div>
                                                 </div>
                                                 <div class="frame-tl animate-right"
@@ -1447,15 +1570,15 @@
                                                         class="animate__animated animate__fadeInTopLeft animate__slower">
                                                         <img src="image/top_3.webp" alt="flowers" draggable="false"
                                                             class="w-100"
-                                                            style="transform-origin: center top; animation-delay: 3.8s;">
+                                                            style="transform-origin: center top; ">
                                                     </div>
                                                 </div>
-                                                <div class="frame-tl animate-right"
+                                                <div class="frame-tl animate-slight"
                                                     style="width: 50%; z-index: 999; transform: translate(-5%, -12%);">
                                                     <div
                                                         class="animate__animated animate__fadeInTopLeft animate__slower">
                                                         <img src="image/top_4.webp" alt="flowers" draggable="false"
-                                                            class="w-100">
+                                                            class="w-100" >
                                                     </div>
                                                 </div>
                                                 <div class="frame-tr"
@@ -1463,15 +1586,15 @@
                                                     <div
                                                         class="animate__animated animate__fadeInTopLeft animate__slower">
                                                         <img src="image/top_1.webp" alt="flowers" draggable="false"
-                                                            class="w-100">
+                                                            class="w-100" >
                                                     </div>
                                                 </div>
-                                                <div class="frame-tr animate-right"
+                                                <div class="frame-tr animate-left"
                                                     style="width: 50%; z-index: 999; transform: translate(0%, -13%) scaleX(-1);">
                                                     <div
                                                         class="animate__animated animate__fadeInTopLeft animate__slower">
                                                         <img src="image/top_2.webp" alt="flowers" draggable="false"
-                                                            class="w-100" style="animation-duration: 3.5s;">
+                                                            class="w-100" style="transform-origin: center top;">
                                                     </div>
                                                 </div>
                                                 <div class="frame-tr animate-right"
@@ -1480,15 +1603,15 @@
                                                         class="animate__animated animate__fadeInTopLeft animate__slower">
                                                         <img src="image/top_3.webp" alt="flowers" draggable="false"
                                                             class="w-100"
-                                                            style="transform-origin: center top; animation-delay: 3.8s;">
+                                                            style="transform-origin: center top; ">
                                                     </div>
                                                 </div>
-                                                <div class="frame-tr animate-right"
+                                                <div class="frame-tr animate-slight"
                                                     style="width: 50%; z-index: 999; transform: translate(5%, -12%) scaleX(-1);">
                                                     <div
                                                         class="animate__animated animate__fadeInTopLeft animate__slower">
                                                         <img src="image/top_4.webp" alt="flowers" draggable="false"
-                                                            class="w-100">
+                                                            class="w-100" >
                                                     </div>
                                                 </div>
                                                 <div class="frame-bl animate-left"
@@ -1513,16 +1636,9 @@
                                                         class="animate__animated animate__fadeInBottomLeft animate__slower">
                                                         <img src="image/bottom_2.webp" alt="flowers" draggable="false"
                                                             class="w-100"
-                                                            style="transform-origin: left bottom; animation-duration: 3.6s;">
+                                                            style="transform-origin: center bottom;">
                                                     </div>
                                                 </div>
-                                                <!-- <div class="frame-bl"
-                                                    style="width: 50%; z-index: 999; transform: translate(-13%, 0%);">
-                                                    <div
-                                                        class="animate__animated animate__fadeInBottomLeft animate__slower">
-                                                        <img src="image/bottom_3.gif" alt="flowers" draggable="false"
-                                                            class="w-100"></div>
-                                                </div> -->
                                                 <div class="frame-br animate-left"
                                                     style="width: 50%; z-index: 999; transform: translate(42%, -60%) scaleX(-1);">
                                                     <div
@@ -1536,64 +1652,59 @@
                                                     <div
                                                         class="animate__animated animate__fadeInBottomLeft animate__slower">
                                                         <img src="image/bottom_0.webp" alt="flowers" draggabre="false"
-                                                            class="w-100">
+                                                            class="w-100" >
                                                     </div>
                                                 </div>
                                                 <div class="frame-br animate-left"
                                                     style="width: 50%; z-index: 999; transform: translate(-7%, 20%) scaleX(-1);">
                                                     <div
                                                         class="animate__animated animate__fadeInBottomLeft animate__slower">
-                                                        <img src="image/bottom_2.webp" alt="flowers" draggabre="false"
+                                                        <img src="image/bottom_2.webp" alt="flowers" draggable="false"
                                                             class="w-100"
-                                                            style="transform-origin: left bottom; animation-duration: 3.6s;">
+                                                            style="transform-origin: center bottom;">
                                                     </div>
                                                 </div>
-                                                <!-- <div class="frame-br"
-                                                    style="width: 50%; z-index: 999; transform: translate(13%, 0%) scaleX(-1);">
-                                                    <div
-                                                        class="animate__animated animate__fadeInBottomLeft animate__slower">
-                                                        <img src="image/bottom_3.gif" alt="flowers" draggable="false"
-                                                            class="w-100"></div>
-                                                </div> -->
                                             </div>
                                             <div
                                                 class="px-2 h-100 w-100 d-flex flex-column justify-content-center align-items-center">
                                                 <div class="mx-auto animate__animated animate__zoomIn animate__slower"
-                                                    style="background-image: url(image/flower.webp); background-size: contain; background-repeat: no-repeat; background-position: center center; padding: 1rem 0 0.5rem 0; width: 200px;">
+                                                    style="background-image: url(image/flower.webp); background-size: contain; background-repeat: no-repeat; background-position: center center; padding: 0.5rem 0 0; width: 200px;">
                                                     <div class="d-flex justify-content-center image-editable">
                                                         <div class="editable h3 mb-0 font-accent"
-                                                            style="font-size: 70px; transform: translate(10px, -10px); font-weight: 200;">
+                                                            style="font-size: 70px; transform: translate(10px, -10px); font-weight: 200; color: var(--inv-accent);">
                                                             C</div>
                                                         <div class="editable h3 mb-0 font-accent"
-                                                            style="font-size: 70px; transform: translate(-10px, 10px); font-weight: 200;">
+                                                            style="font-size: 70px; transform: translate(-10px, 10px); font-weight: 200; color: var(--inv-accent);">
                                                             C</div>
                                                     </div>
                                                 </div>
-                                                <div class="row mx-auto w-75 ">
-                                                    <div class="col-12 p-1">
-                                                        <div class="fade-bg rounded animate__animated animate__zoomIn animate__slow"
-                                                            style="animation-delay: 0.5s;"></div>
-                                                    </div>
-                                                    <div class="col-6 p-1 animate__animated animate__fadeIn animate__fast"
-                                                        style="animation-delay: 0.1s;">
-                                                        <div class="fade-bg-2 rounded animate__animated  animate__slideInLeft animate__slow"
-                                                            style="animation-delay: 0.2s;"></div>
-                                                    </div>
-                                                    <div class="col-6 p-1 animate__animated animate__fadeIn animate__fast"
-                                                        style="animation-delay: 0.1s;">
-                                                        <div class="fade-bg-3 rounded animate__animated animate__slideInRight animate__slow"
-                                                            style="animation-delay: 0.2s;"></div>
-                                                    </div>
-                                                    <div class="col-6 p-1 animate__animated animate__fadeIn animate__fast"
-                                                        style="animation-delay: 0.1s;">
-                                                        <div class="fade-bg-3 rounded animate__animated animate__slideInLeft animate__slow"
-                                                            style="animation-delay: 0.4s; background-image: url('image/us-4.jpeg') !important;">
+                                                <div class="text-center color-accent h4 mb-2 editable animate__animated animate__fadeInDown animate__slow font-latin"
+                                                    style="font-size: 32px;">Galeri Foto</div>
+                                                <div class="w-100 px-4">
+                                                    <div class="gallery-slider animate__animated animate__fadeInUp animate__slow" id="mainGallerySlider">
+                                                        <div class="gallery-item active">
+                                                            <img src="image/us-1.jpeg" alt="Moment 1">
+                                                        </div>
+                                                        <div class="gallery-item">
+                                                            <img src="image/us-2.jpeg" alt="Moment 2">
+                                                        </div>
+                                                        <div class="gallery-item">
+                                                            <img src="image/us-3.jpeg" alt="Moment 3">
+                                                        </div>
+                                                        <div class="gallery-item">
+                                                            <img src="image/us-4.jpeg" alt="Moment 4">
+                                                        </div>
+                                                        <div class="gallery-item">
+                                                            <img src="image/us-5.jpeg" alt="Moment 5">
                                                         </div>
                                                     </div>
-                                                    <div class="col-6 p-1 animate__animated animate__fadeIn animate__fast"
-                                                        style="top: -30px !important; animation-delay: 0.1s;">
-                                                        <div class="fade-bg-2 rounded animate__animated animate__slideInRight animate__slow"
-                                                            style="animation-delay: 0.4s; background-image: url('image/us-5.jpeg') !important;">
+                                                    
+                                                    <div class="gallery-controls">
+                                                        <div class="gallery-btn" onclick="moveGallery(-1)">
+                                                            <i class="icon ph-bold ph-caret-left"></i>
+                                                        </div>
+                                                        <div class="gallery-btn" onclick="moveGallery(1)">
+                                                            <i class="icon ph-bold ph-caret-right"></i>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -1611,12 +1722,12 @@
                                                             class="w-100">
                                                     </div>
                                                 </div>
-                                                <div class="frame-tl animate-right"
+                                                <div class="frame-tl animate-left"
                                                     style="width: 50%; transform: translate(0%, -13%);">
                                                     <div
                                                         class="animate__animated animate__fadeInTopLeft animate__slower">
                                                         <img src="image/top_2.webp" alt="flowers" draggable="false"
-                                                            class="w-100" style="animation-duration: 3.5s;">
+                                                            class="w-100" style="transform-origin: center top;">
                                                     </div>
                                                 </div>
                                                 <div class="frame-tl animate-right"
@@ -1625,10 +1736,10 @@
                                                         class="animate__animated animate__fadeInTopLeft animate__slower">
                                                         <img src="image/top_3.webp" alt="flowers" draggable="false"
                                                             class="w-100"
-                                                            style="transform-origin: center top; animation-delay: 3.8s;">
+                                                            style="transform-origin: center top; ">
                                                     </div>
                                                 </div>
-                                                <div class="frame-tl animate-right"
+                                                <div class="frame-tl animate-slight"
                                                     style="width: 50%; transform: translate(-5%, -12%);">
                                                     <div
                                                         class="animate__animated animate__fadeInTopLeft animate__slower">
@@ -1644,12 +1755,12 @@
                                                             class="w-100">
                                                     </div>
                                                 </div>
-                                                <div class="frame-tr animate-right"
+                                                <div class="frame-tr animate-left"
                                                     style="width: 50%; transform: translate(0%, -13%) scaleX(-1);">
                                                     <div
                                                         class="animate__animated animate__fadeInTopLeft animate__slower">
                                                         <img src="image/top_2.webp" alt="flowers" draggable="false"
-                                                            class="w-100" style="animation-duration: 3.5s;">
+                                                            class="w-100" style="transform-origin: center top;">
                                                     </div>
                                                 </div>
                                                 <div class="frame-tr animate-right"
@@ -1658,10 +1769,10 @@
                                                         class="animate__animated animate__fadeInTopLeft animate__slower">
                                                         <img src="image/top_3.webp" alt="flowers" draggable="false"
                                                             class="w-100"
-                                                            style="transform-origin: center top; animation-delay: 3.8s;">
+                                                            style="transform-origin: center top; ">
                                                     </div>
                                                 </div>
-                                                <div class="frame-tr animate-right"
+                                                <div class="frame-tr animate-slight"
                                                     style="width: 50%; transform: translate(5%, -12%) scaleX(-1);">
                                                     <div
                                                         class="animate__animated animate__fadeInTopLeft animate__slower">
@@ -1690,7 +1801,7 @@
                                                         class="animate__animated animate__fadeInBottomLeft animate__slower">
                                                         <img src="image/bottom_2.webp" alt="flowers" draggable="false"
                                                             class="w-100"
-                                                            style="transform-origin: left bottom; animation-duration: 3.6s;">
+                                                            style="transform-origin: center bottom;">
                                                     </div>
                                                 </div>
                                                 <div class="frame-bl kupu-style"
@@ -1721,9 +1832,9 @@
                                                     style="width: 50%; transform: translate(-7%, 20%) scaleX(-1);">
                                                     <div
                                                         class="animate__animated animate__fadeInBottomLeft animate__slower">
-                                                        <img src="image/bottom_2.webp" alt="flowers" draggabre="false"
+                                                        <img src="image/bottom_2.webp" alt="flowers" draggable="false"
                                                             class="w-100"
-                                                            style="transform-origin: left bottom; animation-duration: 3.6s;">
+                                                            style="transform-origin: center bottom;">
                                                     </div>
                                                 </div>
                                                 <div class="frame-br kupu-style"
@@ -1810,12 +1921,12 @@
                                                             class="w-100">
                                                     </div>
                                                 </div>
-                                                <div class="frame-tl animate-right"
+                                                <div class="frame-tl animate-left"
                                                     style="width: 50%; transform: translate(0%, -13%);">
                                                     <div
                                                         class="animate__animated animate__fadeInTopLeft animate__slower">
                                                         <img src="image/top_2.webp" alt="flowers" draggable="false"
-                                                            class="w-100" style="animation-duration: 3.5s;">
+                                                            class="w-100" style="transform-origin: center top;">
                                                     </div>
                                                 </div>
                                                 <div class="frame-tl animate-right"
@@ -1824,10 +1935,10 @@
                                                         class="animate__animated animate__fadeInTopLeft animate__slower">
                                                         <img src="image/top_3.webp" alt="flowers" draggable="false"
                                                             class="w-100"
-                                                            style="transform-origin: center top; animation-delay: 3.8s;">
+                                                            style="transform-origin: center top; ">
                                                     </div>
                                                 </div>
-                                                <div class="frame-tl animate-right"
+                                                <div class="frame-tl animate-slight"
                                                     style="width: 50%; transform: translate(-5%, -12%);">
                                                     <div
                                                         class="animate__animated animate__fadeInTopLeft animate__slower">
@@ -1843,12 +1954,12 @@
                                                             class="w-100">
                                                     </div>
                                                 </div>
-                                                <div class="frame-tr animate-right"
+                                                <div class="frame-tr animate-left"
                                                     style="width: 50%; transform: translate(0%, -13%) scaleX(-1);">
                                                     <div
                                                         class="animate__animated animate__fadeInTopLeft animate__slower">
                                                         <img src="image/top_2.webp" alt="flowers" draggable="false"
-                                                            class="w-100" style="animation-duration: 3.5s;">
+                                                            class="w-100" style="transform-origin: center top;">
                                                     </div>
                                                 </div>
                                                 <div class="frame-tr animate-right"
@@ -1857,10 +1968,10 @@
                                                         class="animate__animated animate__fadeInTopLeft animate__slower">
                                                         <img src="image/top_3.webp" alt="flowers" draggable="false"
                                                             class="w-100"
-                                                            style="transform-origin: center top; animation-delay: 3.8s;">
+                                                            style="transform-origin: center top; ">
                                                     </div>
                                                 </div>
-                                                <div class="frame-tr animate-right"
+                                                <div class="frame-tr animate-slight"
                                                     style="width: 50%; transform: translate(5%, -12%) scaleX(-1);">
                                                     <div
                                                         class="animate__animated animate__fadeInTopLeft animate__slower">
@@ -1889,7 +2000,7 @@
                                                         class="animate__animated animate__fadeInBottomLeft animate__slower">
                                                         <img src="image/bottom_2.webp" alt="flowers" draggable="false"
                                                             class="w-100"
-                                                            style="transform-origin: left bottom; animation-duration: 3.6s;">
+                                                            style="transform-origin: center bottom;">
                                                     </div>
                                                 </div>
                                                 <div class="frame-bl kupu-style"
@@ -1920,9 +2031,9 @@
                                                     style="width: 50%; transform: translate(-7%, 20%) scaleX(-1);">
                                                     <div
                                                         class="animate__animated animate__fadeInBottomLeft animate__slower">
-                                                        <img src="image/bottom_2.webp" alt="flowers" draggabre="false"
+                                                        <img src="image/bottom_2.webp" alt="flowers" draggable="false"
                                                             class="w-100"
-                                                            style="transform-origin: left bottom; animation-duration: 3.6s;">
+                                                            style="transform-origin: center bottom;">
                                                     </div>
                                                 </div>
                                                 <div class="frame-br kupu-style"
@@ -2490,7 +2601,33 @@
     <!-- end script -->
 
     <script src="js/inline_scripts.js"></script>
+    <script>
+        // Gallery Slider Logic
+        let currentGalleryIndex = 0;
+        
+        function moveGallery(direction) {
+            const items = document.querySelectorAll('#mainGallerySlider .gallery-item');
+            if (items.length === 0) return;
+            
+            items[currentGalleryIndex].classList.remove('active');
+            
+            currentGalleryIndex += direction;
+            if (currentGalleryIndex >= items.length) currentGalleryIndex = 0;
+            if (currentGalleryIndex < 0) currentGalleryIndex = items.length - 1;
+            
+            items[currentGalleryIndex].classList.add('active');
+        }
 
+        // Auto slide
+        let galleryInterval = setInterval(() => moveGallery(1), 5000);
+
+        // Reset interval on manual click
+        document.querySelectorAll('.gallery-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                clearInterval(galleryInterval);
+                galleryInterval = setInterval(() => moveGallery(1), 7000);
+            });
+        });
+    </script>
 </body>
-
 </html>

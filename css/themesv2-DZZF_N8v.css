@@ -1,5 +1,22 @@
 body {
-    background-color: var(--inv-bg)
+    background: var(--inv-bg);
+    min-height: 100vh;
+    position: relative;
+    overflow-x: hidden;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(circle at 20% 50%, rgba(201, 162, 123, 0.08) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(120, 157, 142, 0.1) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 0;
 }
 
 .canvas {
@@ -77,12 +94,21 @@ body {
     left: 0;
     width: 100%;
     height: 80px;
-    background-color: var(--menu-bg);
+    background: var(--menu-bg);
+    backdrop-filter: blur(25px) saturate(200%);
+    -webkit-backdrop-filter: blur(25px) saturate(200%);
     overflow: hidden;
-    box-shadow: 0 -1px 6px rgba(0, 0, 0, .06);
-    -webkit-box-shadow: 0px -1px 6px 0px rgba(0, 0, 0, .06);
-    -moz-box-shadow: 0px -1px 6px 0px rgba(0, 0, 0, .06);
-    transition: all ease-in-out .2s
+    box-shadow: 0 -4px 30px rgba(212, 175, 55, 0.2), 
+                0 -2px 10px rgba(0, 0, 0, 0.3),
+                inset 0 1px 0 rgba(212, 175, 55, 0.1);
+    -webkit-box-shadow: 0 -4px 30px rgba(212, 175, 55, 0.2), 
+                        0 -2px 10px rgba(0, 0, 0, 0.3),
+                        inset 0 1px 0 rgba(212, 175, 55, 0.1);
+    -moz-box-shadow: 0 -4px 30px rgba(212, 175, 55, 0.2), 
+                     0 -2px 10px rgba(0, 0, 0, 0.3),
+                     inset 0 1px 0 rgba(212, 175, 55, 0.1);
+    transition: all cubic-bezier(0.4, 0, 0.2, 1) .3s;
+    border-top: 1px solid rgba(212, 175, 55, 0.2)
 }
 
 .satumomen_menu .satumomen_menu_list {
@@ -165,7 +191,8 @@ body {
     position: absolute;
     right: 20px;
     bottom: 120px;
-    gap: 12px
+    gap: 12px;
+    z-index: 100
 }
 
 .btn-float {
@@ -176,10 +203,21 @@ body {
     align-items: center;
     padding: 0;
     border-radius: 10rem;
-    background-color: var(--inv-accent);
-    border-color: var(--inv-accent);
+    background: linear-gradient(135deg, var(--inv-accent) 0%, var(--inv-accent-dark) 100%);
+    border: 1px solid rgba(212, 175, 55, 0.3);
     color: var(--btn-color);
-    opacity: .7
+    opacity: 1;
+    box-shadow: 0 4px 20px rgba(212, 175, 55, 0.4),
+                0 0 30px rgba(212, 175, 55, 0.2);
+    transition: all cubic-bezier(0.4, 0, 0.2, 1) .3s;
+    cursor: pointer
+}
+
+.btn-float:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 6px 30px rgba(212, 175, 55, 0.6),
+                0 0 50px rgba(212, 175, 55, 0.4);
+    border-color: rgba(212, 175, 55, 0.6)
 }
 
 #btnMusic .play,
@@ -209,19 +247,44 @@ body {
 }
 
 .btn-primary {
-    background-color: var(--inv-accent);
-    border-color: var(--inv-accent);
+    background: linear-gradient(135deg, var(--inv-accent) 0%, var(--inv-accent-dark) 100%);
+    border: 1px solid rgba(212, 175, 55, 0.3);
     color: var(--btn-color);
-    border-radius: .6rem
+    border-radius: .6rem;
+    box-shadow: 0 4px 20px rgba(212, 175, 55, 0.3),
+                0 0 30px rgba(212, 175, 55, 0.15);
+    transition: all cubic-bezier(0.4, 0, 0.2, 1) .3s;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    position: relative;
+    overflow: hidden
+}
+
+.btn-primary::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s
+}
+
+.btn-primary:hover::before {
+    left: 100%
 }
 
 .btn-primary:hover,
 .btn-primary:active,
 .btn-primary.active {
-    background-color: var(--inv-accent) !important;
-    border-color: var(--inv-accent) !important;
+    background: linear-gradient(135deg, var(--inv-accent-light) 0%, var(--inv-accent) 100%) !important;
+    border-color: rgba(212, 175, 55, 0.6) !important;
     color: var(--btn-color) !important;
-    box-shadow: var(--inv-accent) !important
+    box-shadow: 0 6px 30px rgba(212, 175, 55, 0.5),
+                0 0 50px rgba(212, 175, 55, 0.3) !important;
+    transform: translateY(-3px) scale(1.02)
 }
 
 .rounded-pill {
@@ -381,10 +444,20 @@ body {
 
 .countdown-item {
     width: 100%;
-    background-color: var(--inv-accent);
+    background: linear-gradient(135deg, var(--inv-accent) 0%, var(--inv-accent-dark) 100%);
     color: var(--btn-color);
     padding: 4px;
-    border-radius: .4rem
+    border-radius: .4rem;
+    box-shadow: 0 2px 12px rgba(212, 175, 55, 0.3),
+                0 0 20px rgba(212, 175, 55, 0.15);
+    transition: transform .3s ease;
+    border: 1px solid rgba(212, 175, 55, 0.3)
+}
+
+.countdown-item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 20px rgba(212, 175, 55, 0.5),
+                0 0 40px rgba(212, 175, 55, 0.3)
 }
 
 .countdown-item .number {

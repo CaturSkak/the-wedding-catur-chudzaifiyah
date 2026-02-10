@@ -38,14 +38,15 @@
     }
 
     .leaflet-popup-content-wrapper {
-      background: #ffeaf5;
-      color: #800040;
+      background: #fdfbf7;
+      color: #2c4239;
       font-weight: bold;
       font-size: 10px;
       border-radius: 10px;
-      padding: 4px !important; /* default: 12px */
+      padding: 4px !important;
       margin: 0 !important;
-      box-shadow: 0 0 10px rgba(255, 182, 193, 0.5);
+      box-shadow: 0 4px 12px rgba(44, 66, 57, 0.15);
+      border: 1px solid rgba(191, 162, 96, 0.2);
     }
 
     .leaflet-popup-content {
@@ -54,23 +55,23 @@
     }
 
     .leaflet-routing-container {
-      background: #fff0f5;
-      border: 1px solid #ffc0cb;
+      background: #fdfbf7;
+      border: 1px solid #bfa260;
       border-radius: 8px;
       padding: 10px;
       margin: 5px;
       font-size: 10px;
-      color: #d63384;
+      color: #2c4239;
       display: none;
     }
 
     .leaflet-bar a {
-      background-color: #ffb6c1 !important;
+      background-color: #bfa260 !important;
       color: white !important;
     }
 
     .leaflet-control {
-      background-color: #ffe0f0 !important;
+      background-color: #fdfbf7 !important;
     }
   </style>
   <script>
@@ -106,15 +107,15 @@
   top: 10px;
   left: 50%;
   transform: translateX(-50%);
-  background: #fff0f5;
-  border: 1px solid #ffc0cb;
+  background: #fdfbf7;
+  border: 1px solid #bfa260;
   border-radius: 8px;
   padding: 8px 12px;
   font-size: 10px;
-  color: #d63384;
+  color: #2c4239;
   display: none;
   z-index: 1000;
-  box-shadow: 0 0 6px rgba(255,192,203,0.5);
+  box-shadow: 0 4px 12px rgba(44, 66, 57, 0.15);
 "></div>
 
 <!-- Leaflet JS -->
@@ -146,7 +147,7 @@
 
   // Default marker with popup
   const weddingMarker = L.marker([fixedLat, fixedLon], { icon: houseIcon }).addTo(map)
-    .bindPopup("<div style='text-align:center;'><span style='font-size: 14px'>💗</span> <i style='font-size: 10px; font-weight: 400'>Wedding Location</i></div>", { closeButton: false })
+    .bindPopup("<div style='text-align:center;'><span style='font-size: 14px'>🌿</span> <i style='font-size: 10px; font-weight: 400'>Wedding Location</i></div>", { closeButton: false })
     .openPopup();
 
   // Try geolocation
@@ -166,7 +167,7 @@
             serviceUrl: 'https://router.project-osrm.org/route/v1'
           }),
           lineOptions: {
-            styles: [{ color: '#ff69b4', weight: 5 }]
+            styles: [{ color: '#789d8e', weight: 5 }]
           },
           showAlternatives: false,
           routeWhileDragging: false,
