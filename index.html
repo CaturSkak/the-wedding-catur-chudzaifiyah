@@ -28,7 +28,12 @@
 
     <!-- css -->
     <link rel="stylesheet" href="css/animate.min.css">
-    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <script>
+        document.write('<link rel="stylesheet" type="text/css" href="css/style.css?time=' + new Date().getTime() + '">');
+    </script>
+    <noscript>
+        <link rel="stylesheet" type="text/css" href="css/style.css">
+    </noscript>
 
     <link rel="stylesheet" href="css/bootstrap-vCaDZZbr.css">
     <link rel="stylesheet" href="css/themesv2-DZZF_N8v.css">
@@ -198,7 +203,7 @@
             left: 0;
             height: 120px;
             width: 100%;
-            background-image: url('image/us-1.jpeg');
+            background-image: url('image/foto/1.jpg');
             background-size: cover;
             background-position: center;
             opacity: 0.15;
@@ -227,7 +232,7 @@
         }
 
         .fade-bg-2 {
-            background-image: url('image/us-2.jpeg');
+            background-image: url('image/foto/2.jpg');
             background-size: cover;
             background-position: center;
             position: relative;
@@ -243,7 +248,7 @@
         }
 
         .fade-bg-3 {
-            background-image: url('image/us-3.jpeg');
+            background-image: url('image/foto/3.jpg');
             background-size: cover;
             background-position: center;
             position: relative;
@@ -490,7 +495,7 @@
         <div id="modalOverlay" class="modal-backdrop fade" style="display: none;"></div>
         <div id="loader" class="loader-wrapper" style="display: none;"><span class="loader"><span
                     class="loader-inner"></span></span></div> <audio id="music" loop="loop" autoplay="autoplay">
-            <source src="music/instrumental.mp3">
+            <source src="music/CaribbeanBlue.m4a">
         </audio>
         <div id="workspace-container" class="position-fixed h-100 w-100" style="overflow: hidden;">
             <div id="panZoom" class="position-fixed h-100 w-100"
@@ -1689,19 +1694,46 @@
                                                 <div class="w-100 px-4">
                                                     <div class="gallery-slider animate__animated animate__fadeInUp animate__slow" id="mainGallerySlider">
                                                         <div class="gallery-item active">
-                                                            <img src="image/us-1.jpeg" alt="Moment 1">
+                                                            <img src="image/foto/1.jpg" alt="Moment 1" loading="lazy">
                                                         </div>
                                                         <div class="gallery-item">
-                                                            <img src="image/us-2.jpeg" alt="Moment 2">
+                                                            <img src="image/foto/2.jpg" alt="Moment 2" loading="lazy">
                                                         </div>
                                                         <div class="gallery-item">
-                                                            <img src="image/us-3.jpeg" alt="Moment 3">
+                                                            <img src="image/foto/3.jpg" alt="Moment 3" loading="lazy">
                                                         </div>
                                                         <div class="gallery-item">
-                                                            <img src="image/us-4.jpeg" alt="Moment 4">
+                                                            <img src="image/foto/4.jpg" alt="Moment 4" loading="lazy">
                                                         </div>
                                                         <div class="gallery-item">
-                                                            <img src="image/us-5.jpeg" alt="Moment 5">
+                                                            <img src="image/foto/5.jpg" alt="Moment 5" loading="lazy">
+                                                        </div>
+                                                        <div class="gallery-item">
+                                                            <img src="image/foto/6.jpg" alt="Moment 6" loading="lazy">
+                                                        </div>
+                                                        <div class="gallery-item">
+                                                            <img src="image/foto/7.jpg" alt="Moment 7" loading="lazy">
+                                                        </div>
+                                                        <div class="gallery-item">
+                                                            <img src="image/foto/8.jpg" alt="Moment 8" loading="lazy">
+                                                        </div>
+                                                        <div class="gallery-item">
+                                                            <img src="image/foto/9.jpg" alt="Moment 9" loading="lazy">
+                                                        </div>
+                                                        <div class="gallery-item">
+                                                            <img src="image/foto/10.jpg" alt="Moment 10" loading="lazy">
+                                                        </div>
+                                                        <div class="gallery-item">
+                                                            <img src="image/foto/11.jpg" alt="Moment 11" loading="lazy">
+                                                        </div>
+                                                        <div class="gallery-item">
+                                                            <img src="image/foto/12.jpg" alt="Moment 12" loading="lazy">
+                                                        </div>
+                                                        <div class="gallery-item">
+                                                            <img src="image/foto/13.jpg" alt="Moment 13" loading="lazy">
+                                                        </div>
+                                                        <div class="gallery-item">
+                                                            <img src="image/foto/14.jpg" alt="Moment 14" loading="lazy">
                                                         </div>
                                                     </div>
                                                     
@@ -2062,7 +2094,7 @@
                                                                 <p style="margin: 0; color: #333; font-weight: bold; font-family: 'Jost', sans-serif; font-size: 13px;">223601003860539</p>
                                                                 <p style="margin: 0; color: #666; font-size: 10px; font-family: 'Jost', sans-serif; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Chudzaifiyah - BRI</p>
                                                             </div>
-                                                            <button onclick="copyText('223601003860539')" class="btn btn-sm btn-pink rounded-pill" style="font-size: 12px; padding: 2px 8px;"><i class="icon ph-fill ph-copy"></i></button>
+                                                            <button onclick="copyRekening('223601003860539', this)" class="btn btn-sm btn-pink rounded-pill" style="font-size: 12px; padding: 2px 8px;"><i class="icon ph-fill ph-copy"></i></button>
                                                         </div>
 
                                                         <div class="bank-card animate__animated animate__fadeIn animate__slow" style="display: flex; align-items: center; margin-top: 0.6rem; background: rgba(255, 255, 255, 0.8); padding: 10px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border: 1px solid rgba(212, 175, 55, 0.3); animation-delay: 0.2s;">
@@ -2071,7 +2103,7 @@
                                                                 <p style="margin: 0; color: #333; font-weight: bold; font-family: 'Jost', sans-serif; font-size: 13px;">1360031789040</p>
                                                                 <p style="margin: 0; color: #666; font-size: 10px; font-family: 'Jost', sans-serif; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Ahmad Catur Y. - Mandiri</p>
                                                             </div>
-                                                            <button onclick="copyText('1360031789040')" class="btn btn-sm btn-pink rounded-pill" style="font-size: 12px; padding: 2px 8px;"><i class="icon ph-fill ph-copy"></i></button>
+                                                            <button onclick="copyRekening('1360031789040', this)" class="btn btn-sm btn-pink rounded-pill" style="font-size: 12px; padding: 2px 8px;"><i class="icon ph-fill ph-copy"></i></button>
                                                         </div>
 
                                                         <div class="bank-card animate__animated animate__fadeIn animate__slow" style="display: flex; align-items: center; margin-top: 0.6rem; background: rgba(255, 255, 255, 0.8); padding: 10px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border: 1px solid rgba(212, 175, 55, 0.3); animation-delay: 0.4s;">
@@ -2080,7 +2112,7 @@
                                                                 <p style="margin: 0; color: #333; font-weight: bold; font-family: 'Jost', sans-serif; font-size: 13px;">1957663677</p>
                                                                 <p style="margin: 0; color: #666; font-size: 10px; font-family: 'Jost', sans-serif; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Ahmad Catur Y. - BNI</p>
                                                             </div>
-                                                            <button onclick="copyText('1957663677')" class="btn btn-sm btn-pink rounded-pill" style="font-size: 12px; padding: 2px 8px;"><i class="icon ph-fill ph-copy"></i></button>
+                                                            <button onclick="copyRekening('1957663677', this)" class="btn btn-sm btn-pink rounded-pill" style="font-size: 12px; padding: 2px 8px;"><i class="icon ph-fill ph-copy"></i></button>
                                                         </div>
 
                                                         <div class="bank-card animate__animated animate__fadeIn animate__slow" style="display: flex; flex-direction: column; align-items: center; margin-top: 0.8rem; background: rgba(255, 255, 255, 0.8); padding: 8px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border: 1px solid rgba(212, 175, 55, 0.3); animation-delay: 0.6s; cursor: pointer;" onclick="showModal(qrisModal)">
@@ -2280,7 +2312,7 @@
                                                         <div class="wm-music mt-3 text-center animate__animated animate__fadeInUp animate__slower animate__delay-1s"
                                                             style="font-size: 60%;">
                                                             <div style="opacity: 0.5;"><strong>Music:</strong></div>
-                                                            <div style="opacity: 0.5;">instrumental wedding</div>
+                                                            <div style="opacity: 0.5;">Caribbean Blue</div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -2809,6 +2841,21 @@
 
     <script src="js/inline_scripts.js"></script>
     <script>
+        function copyRekening(text, btnElement) {
+            var tempInput = document.createElement("input");
+            tempInput.value = text;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand("copy");
+            document.body.removeChild(tempInput);
+            
+            var originalHTML = btnElement.innerHTML;
+            btnElement.innerHTML = 'Disalin';
+            setTimeout(function() {
+                btnElement.innerHTML = originalHTML;
+            }, 2000);
+        }
+
         // Gallery Slider Logic
         let currentGalleryIndex = 0;
         
